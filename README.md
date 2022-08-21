@@ -1,14 +1,16 @@
 # dlsite-doujin-renamer
-![软件截图](screenshot.png)
 
 ## Features
+
 - 支持深度查找带有 RJ 号的文件夹
 - 支持手动选择文件夹或拖拽文件夹到软件窗口
 - 支持在 ```config.json``` 中设置软件配置
 - 支持在 ```cache.db``` 中缓存从 [dlsite.com](https://www.dlsite.com/maniax/) 抓取的元数据
 
 ## Config
+
 示例配置
+
 ```json
 {
   "scaner_max_depth": 5,
@@ -29,6 +31,7 @@
   ]
 }
 ```
+
 - ```scaner_max_depth``` 扫描器的扫描深度
 - ```scraper_locale``` 刮削器的刮削元数据的语言（```["en_us", "ja_jp", "ko_kr", "zh_cn", "zh_tw"]``` 中的一个）
 - ```scraper_connect_timeout``` 刮削器的 [requests 连接超时](https://docs.python-requests.org/zh_CN/latest/user/advanced.html#timeout)时间（秒）
