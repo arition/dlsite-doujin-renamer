@@ -58,12 +58,18 @@ class Scraper(object):
             'series_id': '',
             'age_category': '',
             'tags': [],
-            'cvs': []
+            'cvs': [],
+            'cover_url': '',
         }
 
         # parse work_name
         work_name = d('#work_name').text()
         metadata['work_name'] = work_name
+
+        # generate cover art url
+        template = 'https://img.dlsite.jp/modpub/images2/work/doujin/RJ{0}/RJ{1}_img_main.jpg'
+        rjcode_number = int(rjcode[2:])
+        metadata['cover_url'] = template.format((rjcode_number // 1000 + 1) * 1000, rjcode_number)
 
         # parse maker_name
         maker_anchor_element = d('span.maker_name > a')
