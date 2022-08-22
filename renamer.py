@@ -243,7 +243,7 @@ class Renamer(object):
         work_folders = self.__scaner.scan(root_path)
 
         for folder_path in work_folders:
-            rjcode = Dlsite.parse_rjcode(folder_path)
+            rjcode = Dlsite.parse_rjcode(os.path.basename(folder_path))
             if not rjcode:  # 检查文件夹名称中是否含RJ号
                 continue
 
