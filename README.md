@@ -1,9 +1,15 @@
 # dlsite-doujin-renamer
 
+Copy and embed metadata to the audio files.
+
+## Usage
+
+1. Install required packages using [pdm](https://pdm.fming.dev/)
+2. Run `python main.py [source_path] [target_path]`
+
 ## Features
 
 - 支持深度查找带有 RJ 号的文件夹
-- 支持手动选择文件夹或拖拽文件夹到软件窗口
 - 支持在 ```config.json``` 中设置软件配置
 - 支持在 ```cache.db``` 中缓存从 [dlsite.com](https://www.dlsite.com/maniax/) 抓取的元数据
 
