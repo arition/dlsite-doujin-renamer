@@ -16,7 +16,7 @@ class Main:
         config_file_path = os.path.join('config.json')
         self.__config_file = ConfigFile(config_file_path)
 
-    def run_renamer(self, root_path_list: list[str]):
+    def run_renamer(self, root_path_list: list[str], target_path: str):
         try:
             config = self.__config_file.load_config()  # 从配置文件中读取配置
         except JSONDecodeError as err:
@@ -76,9 +76,9 @@ class Main:
 
         # 执行重命名
         for root_path in root_path_list:
-            renamer.rename(root_path)
+            renamer.rename(root_path, target_path)
 
 
 if __name__ == '__main__':
     main = Main()
-    main.run_renamer(sys.argv[1:])
+    main.run_renamer(sys.argv[1:-1], sys.argv[-1])

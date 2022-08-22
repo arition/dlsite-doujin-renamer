@@ -5,7 +5,12 @@ description = ""
 authors = [
     {name = "arition", email = "aritionkb@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "mutagen>=1.45.1",
+    "pyquery>=1.4.3",
+    "requests>=2.28.1",
+    "peewee>=3.15.1",
+]
 requires-python = ">=3.10"
 license = {text = "MIT"}
 
