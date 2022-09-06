@@ -112,17 +112,17 @@ class Renamer(object):
         '''
         Get title from filename
         '''
-        result = re.search(r'^\d*[_\.、\s]*(.+)\.\w+$', name)
+        result = re.search(r'^(track)?\d*[_\.、\s]*(.+)\.\w+$', name)
         if result:
-            return result.group(1)
+            return result.group(2)
 
     def __sniff_name_from_folder(self, name: str) -> str:
         '''
         Get title from filename
         '''
-        result = re.search(r'^\d*[_\.、\s]*(.+)$', name)
+        result = re.search(r'^(track)?\d*[_\.、\s]*(.+)$', name)
         if result:
-            return result.group(1)
+            return result.group(2)
 
     def __rename(self, folder_path: str, new_basename: str) -> None:
         dirname, basename = os.path.split(folder_path)
