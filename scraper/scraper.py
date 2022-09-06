@@ -67,7 +67,7 @@ class Scraper(object):
         metadata['work_name'] = work_name
 
         # generate cover art url
-        template = 'https://img.dlsite.jp/modpub/images2/work/doujin/RJ{0}/RJ{1}_img_main.jpg'
+        template = 'https://img.dlsite.jp/modpub/images2/work/doujin/RJ{0:06}/RJ{1:06}_img_main.jpg'
         rjcode_number = int(rjcode[2:])
         metadata['cover_url'] = template.format((rjcode_number // 1000 + 1) * 1000, rjcode_number)
 
