@@ -112,7 +112,7 @@ class Renamer(object):
         '''
         Get title from filename
         '''
-        result = re.search(r'^\d*[_\.\s]*(.+)\.\w+$', name)
+        result = re.search(r'^\d*[_\.、\s]*(.+)\.\w+$', name)
         if result:
             return result.group(1)
 
@@ -120,7 +120,7 @@ class Renamer(object):
         '''
         Get title from filename
         '''
-        result = re.search(r'^\d*[_\.\s]*(.+)$', name)
+        result = re.search(r'^\d*[_\.、\s]*(.+)$', name)
         if result:
             return result.group(1)
 
