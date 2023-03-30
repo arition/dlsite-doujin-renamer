@@ -236,6 +236,11 @@ class Renamer(object):
                                  discnumber=str(disc_number), discsubtitle=disc_subtitle)
                 self.__write_tag_cover(cover_path, target_file)
 
+                # copy lrc file if exists
+                lrc_file = os.path.join(source_path, os.path.splitext(os.path.basename(audio_file))[0] + '.lrc')
+                if os.path.exists(lrc_file):
+                    shutil.copyfile(lrc_file, os.path.join(target_path, os.path.basename(lrc_file)))
+
             disc_number += 1
         return disc_number
 
