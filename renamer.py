@@ -112,7 +112,7 @@ class Renamer(object):
         '''
         Get title from filename
         '''
-        result = re.search(r'^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)\.\w+$', name)
+        result = re.search(r'^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)\.\w+$', name, re.IGNORECASE)
         if result:
             return result.group(2)
 
@@ -120,7 +120,7 @@ class Renamer(object):
         '''
         Get title from filename
         '''
-        result = re.search(r'^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)$', name)
+        result = re.search(r'^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)$', name, re.IGNORECASE)
         if result:
             return result.group(2)
 
