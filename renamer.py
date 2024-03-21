@@ -116,17 +116,21 @@ class Renamer(object):
         """
         Get title from filename
         """
-        result = re.search(r"^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)\.\w+$", name, re.IGNORECASE)
+        result = re.search(r"^(■|track|#|シーン|scene|トラック|tr)?\d+[_\-\.、\s:：]*(.+)\.\w+$", name, re.IGNORECASE)
         if result:
             return result.group(2)
+        else:
+            return os.path.splitext(name)[0]
 
     def __sniff_name_from_folder(self, name: str) -> str:
         """
         Get title from filename
         """
-        result = re.search(r"^(■|track|#|シーン|scene|トラック)?\d*[_\-\.、\s]*(.+)$", name, re.IGNORECASE)
+        result = re.search(r"^(■|track|#|シーン|scene|トラック|tr)?\d+[_\-\.、\s:：]*(.+)$", name, re.IGNORECASE)
         if result:
             return result.group(2)
+        else:
+            return name
 
     def __rename(self, folder_path: str, new_basename: str) -> None:
         dirname, basename = os.path.split(folder_path)
@@ -286,9 +290,11 @@ class Renamer(object):
             shutil.copyfile(vtt_file, os.path.join(target_path, os.path.basename(vtt_file)))
 
         # copy .wav.vtt file if exists
-        vtt_file = os.path.join(source_path, os.path.basename(audio_file) + ".vtt")
+        vtt_file = os.path.join(source_path, os.path.splitext(os.path.basename(audio_file))[0] + ".wav.vtt")
         if os.path.exists(vtt_file):
-            shutil.copyfile(vtt_file, os.path.join(target_path, os.path.basename(vtt_file)))
+            shutil.copyfile(
+                vtt_file, os.path.join(target_path, os.path.splitext(os.path.basename(audio_file))[0] + ".vtt")
+            )
 
     def __check_folder_has_flac(self, folder_path: str) -> bool:
         files = glob.glob(os.path.join(folder_path, "**", "*.flac"), recursive=True)
